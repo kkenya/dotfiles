@@ -1,0 +1,6 @@
+# 補完時に大文字小文字を区別しない
+set completion-ignore-case on
+# ファイル種類を色分けする
+set colored-stats on
+# 補完の接頭辞をカラフルに
+set colored-completion-prefix on
