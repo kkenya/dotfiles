@@ -27,6 +27,11 @@ restart() {
 	exec "$SHELL"
 }
 
+# cd after mkdir
+mkcd() {
+    mkdir $1 && cd $_
+}
+
 # built in
 alias ll="ls -la"
 alias rm="rm -i"

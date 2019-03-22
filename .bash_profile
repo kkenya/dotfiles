@@ -18,9 +18,10 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # go
 export GOPATH=$HOME/go
 
-# 履歴の重複を保存しない
+# 重複舌履歴と空白を含む履歴を保存しない
 export HISTCONTROL=ignoreboth # shorthand for 'gnorespace' and 'ignoredups'
 export HISTSIZE=2000
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
