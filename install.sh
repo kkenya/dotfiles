@@ -4,11 +4,28 @@ set -e
 DOT_DIR="${HOME}/dotfiles"
 REPOSITORY="git@github.com:kkenya/dotfiles.git"
 
+is_installed() {
+    type $1 > /dev/null 2>&1
+}
+
+# confirm that  brew is installed
+if is_installed "brew"; then
+    echo "$(tput setaf 2)Already installed Homebrew ✔︎$(tput sgr0)"
+else
+    echo "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+echo "Updating Homebrew"
+brew doctor
+brew update
+
+# confirm that dotfiles directory exists
 if [ ! -d ${DOT_DIR} ]; then
     echo "Downloading dotfiles..."
     mkdir ${DOT_DIR}
 
-    if type "git" > /dev/null  2>&1; then
+    if is_installed "git"; then
         git clone ${REPOSITORY}
     fi
     echo "Download dotfiles is complete!"
@@ -24,3 +41,5 @@ do
 done
 
 echo "Deploy dotfiles completed"
+
+exit 0
