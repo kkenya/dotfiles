@@ -4,9 +4,39 @@ set -e
 DOT_DIR="${HOME}/dotfiles"
 REPOSITORY="git@github.com:kkenya/dotfiles.git"
 
+usage() {
+    CMD_NAME=`basename $0`
+    cat << _EOT_ 1>&2
+Usage:
+    $CMD_NAME [<options>]
+
+Options:
+    -f
+    -h  print usage
+_EOT_
+    exit 1
+}
+
 is_installed() {
     type $1 > /dev/null 2>&1
 }
+
+while getopts fh: OPT
+do
+  case $OPT in
+    "f" )
+        FLG_A="TRUE"
+        ;;
+    "h" )
+        usage
+        ;;
+    * )
+        usage
+        ;;
+  esac
+done
+
+shift $((OPTIND - 1))
 
 # confirm that  brew is installed
 if is_installed "brew"; then
@@ -28,7 +58,10 @@ if [ ! -d ${DOT_DIR} ]; then
     if is_installed "git"; then
         git clone ${REPOSITORY}
     fi
-    echo "Download dotfiles is complete!"
+    echo "Download dotfiles is completed!"
+else
+    echo "Dotfiles already exists" 1>&2
+    exit 1
 fi
 
 cd ${DOT_DIR}
