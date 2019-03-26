@@ -1,0 +1,45 @@
+[include]
+    path= ~/.gitconfig.local
+
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
+
+[core]
+	excludesfile = ~/.gitignore_global
+	safecrlf = true
+[ghp]
+	root = /Users/kawadzukenya/go/src
+
+[color]
+	ui = auto
+
+[fetch]
+	prune = true
+
+[alias]
+	a = add
+	ap = add -p
+	c = commit
+	cm= commit -m
+	ca = commit --amend
+    can = commit --amend --no-edit
+	co = checkout
+	cob = checkout -b
+	d= diff
+    dc = diff --cached
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+	p= push
+	b= branch
+	ba= branch -a
+	bm= branch -m
+	l= log
+	lg= log --graph --oneline --decorate=full
+	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
+	lp= log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+	s= status
+
