@@ -1,0 +1,33 @@
+[user]
+	name = Kenya Kawatsu
+	email = 3982ne@gmail.com
+
+[ghp]
+	root = /Users/kawadzukenya/go/src
+
+[color]
+	ui = auto
+
+[fetch]
+	prune = true
+
+[alias]
+	a = add
+	ap = add -p
+	c = commit
+	cm= commit -m
+	ca = commit --amend
+	can = commit --amend --no-edit
+	co = checkout
+	cob = checkout -b
+	s= status
+	d= diff
+	dc= diff --cached
+	p= push
+	b= branch
+	ba= branch -a
+	bm= branch -m 
+	l= log
+	lg= log --graph --oneline --decorate=full
+	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
+	lp= log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
