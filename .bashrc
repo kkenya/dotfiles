@@ -17,14 +17,14 @@ if [[ -t 1 ]]; then
 fi
 
 # show pid port 
-# usage show-port 8080"
-show-port() {
-	echo "lsof -i -P | grep $1"
+# usage port 8080"
+port() {
+	lsof -i:$1
 }
 
 # restart shell
 restart() {
-	exec "$SHELL"
+    source ~/.bash_profile
 }
 
 # cd after mkdir
