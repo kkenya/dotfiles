@@ -41,5 +41,5 @@ alias ll="ls -la"
 alias rm="rm -i"
 
 # start corrent directory in an opened window
-alias code="code -r"
+alias vs="code -r"
 
