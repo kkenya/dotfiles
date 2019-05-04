@@ -27,6 +27,16 @@ restart() {
     source ~/.bash_profile
 }
 
+# cd after mkdir
+mkcd() {
+    mkdir $1 && cd $_
+}
+
+# built in
+alias ll="ls -la"
+alias rm="rm -i"
+alias type="type -a"
+
 # Ruby on Rails
 alias be="bundle exec"
 
@@ -36,9 +46,6 @@ alias ls="exa"
 # rails
 alias bi="bundle install --path vendor/bundle"
 alias be="bundle exec"
-
-alias ll="ls -la"
-alias rm="rm -i"
 
 # start corrent directory in an opened window
 alias vs="code -r"

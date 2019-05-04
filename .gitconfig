@@ -2,6 +2,16 @@
 	name = Kenya Kawatsu
 	email = 3982ne@gmail.com
 
+[include]
+    path= ~/.gitconfig.local
+
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
+
+[core]
+	excludesfile = ~/.gitignore_global
+	safecrlf = true
 [ghp]
 	root = /Users/kawadzukenya/go/src
 
@@ -14,20 +24,25 @@
 [alias]
 	a = add
 	ap = add -p
+	b= branch
 	c = commit
 	cm= commit -m
 	ca = commit --amend
-	can = commit --amend --no-edit
+    can = commit --amend --no-edit
 	co = checkout
 	cob = checkout -b
-	s= status
 	d= diff
-	dc= diff --cached
-	p= push
-	b= branch
-	ba= branch -a
-	bm= branch -m 
+    dc = diff --cached
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
 	l= log
 	lg= log --graph --oneline --decorate=full
 	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
 	lp= log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+	p= push
+	ba= branch -a
+	bm= branch -m
+	s= status

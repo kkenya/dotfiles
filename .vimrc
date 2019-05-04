@@ -32,6 +32,7 @@ call plug#end()
 " Basic setup
 " -----------------------------
 "" Encoding
+set fenc=utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
@@ -54,8 +55,8 @@ let mapleader=','
 set hidden "編集中のバッファを保存せずに閉じる
 
 "" Searching
-set hlsearch "検索結果をハイライト
-set incsearch "インクリメンタルサーチ
+set hlsearch "検索結果をハイライトする
+set incsearch "インクリメンタルサーチを有効にする
 set ignorecase "大文字と小文字を区別しない
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
 set wrapscan "検索時に最後まで行ったら最初に戻る
@@ -65,6 +66,10 @@ set noswapfile  "スワップファイルを作らない
 set nobackup    "バックアップファイルを作らない
 
 set fileformats=unix,dos,mac "想定される改行 (<EOL>) の種類を指定する
+"East Asian Width Class Ambiguous な文字(ユーロ、登録商標記号、著作権記号、ギリシャ文字、キリル文字など)をどう扱うかを定める
+set ambiwidth=double
+"ファイルがVimの内部では変更されてないが、Vimの外部で変更されたことが判明したとき、自動的に読み直す。
+set autoread
 
 "*****************************************************************************
 "" Visual Settings
@@ -101,6 +106,11 @@ set titlestring=%F "ウインドウタイトルを設定
 
 "ステータス行の表示設定
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+" 補完ウィンドウの設定
+set completeopt=menuone
+" ビープ音を可視化
+set visualbell
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -150,13 +160,13 @@ nnoremap <silent> <S-t> :tabnew<CR>
 "noremap <leader>x :bn<CR>
 "noremap <leader>w :bn<CR>
 "
-""" Close buffer
+"" Close buffer
 "noremap <leader>c :bd<CR>
 "
-""" 検索時のハイライトを消す
+" 検索時のハイライトを消す
 "nnoremap <silent> <leader><space> :noh<cr>
 ""ハイライトをEsc2回で消去
-"nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 "
 """ Switching windows
 "noremap <C-j> <C-w>j
@@ -212,3 +222,4 @@ set iskeyword+=- "ハイフンを境界文字から外す
 "autocmd Filetype yml		 setlocal sw=2 sts=2 ts=2 et
 "autocmd BufNewFile,BufRead *.{md,txt} setlocal filetype=markdown
 "autocmd BufNewFile,BufRead *.{md,txt} colorscheme slate
+autocmd BufWritePre * :%s/\s\+$//ge
