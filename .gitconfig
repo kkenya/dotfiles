@@ -1,17 +1,10 @@
-[user]
-	name = Kenya Kawatsu
-	email = 3982ne@gmail.com
-
 [include]
     path= ~/.gitconfig.local
-
-[url "github:"]
-    InsteadOf = https://github.com/
-    InsteadOf = git@github.com:
 
 [core]
 	excludesfile = ~/.gitignore_global
 	safecrlf = true
+
 [ghp]
 	root = /Users/kawadzukenya/go/src
 

@@ -219,7 +219,7 @@ set iskeyword+=- "ハイフンを境界文字から外す
 "autocmd FileType go          setlocal sw=4 sts=4 ts=4 noet
 "autocmd FileType erb         setlocal sw=4 sts=4 ts=4 noet
 "autocmd FileType html        setlocal sw=4 sts=4 ts=4 noet
-"autocmd Filetype yml		 setlocal sw=2 sts=2 ts=2 et
+autocmd Filetype yml		 setlocal sw=2 sts=2 ts=2 et
 "autocmd BufNewFile,BufRead *.{md,txt} setlocal filetype=markdown
 "autocmd BufNewFile,BufRead *.{md,txt} colorscheme slate
 autocmd BufWritePre * :%s/\s\+$//ge
