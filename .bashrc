@@ -16,7 +16,7 @@ if [[ -t 1 ]]; then
     bind '"\C-w":unix-filename-rubout'
 fi
 
-# show pid port 
+# show pid port
 # usage port 8080"
 port() {
 	lsof -i:$1
@@ -24,7 +24,7 @@ port() {
 
 # restart shell
 restart() {
-    source ~/.bash_profile
+    exec -l $SHELL
 }
 
 # cd after mkdir
@@ -48,5 +48,5 @@ alias bi="bundle install --path vendor/bundle"
 alias be="bundle exec"
 
 # start corrent directory in an opened window
-alias code="code -r"
+alias vs="code -r ."
 
