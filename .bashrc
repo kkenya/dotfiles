@@ -16,7 +16,7 @@ if [[ -t 1 ]]; then
     bind '"\C-w":unix-filename-rubout'
 fi
 
-# show pid port 
+# show pid port
 # usage port 8080"
 port() {
 	lsof -i:$1
@@ -36,6 +36,10 @@ mkcd() {
 alias ll="ls -la"
 alias rm="rm -i"
 alias type="type -a"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="~"
 
 # Ruby on Rails
 alias be="bundle exec"
@@ -48,5 +52,5 @@ alias bi="bundle install --path vendor/bundle"
 alias be="bundle exec"
 
 # start corrent directory in an opened window
-alias vs="code -r"
+alias vs="code -r ."
 
