@@ -8,7 +8,7 @@ fi
 
 # default
 # export PS1='[\u@\h \W]\$'
-export PS1='\[\e[1;35m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\]$(__git_ps1)\$ '
+export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(__git_ps1)\$ '
 
 # git
 source /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -27,7 +27,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kawadzukenya/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/kawadzukenya/Downloads/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/kawadzukenya/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/kawadzukenya/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.bash.inc'; fi
