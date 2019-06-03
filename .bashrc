@@ -36,6 +36,10 @@ mkcd() {
 alias ll="ls -la"
 alias rm="rm -i"
 alias type="type -a"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="~"
 
 # Ruby on Rails
 alias be="bundle exec"
