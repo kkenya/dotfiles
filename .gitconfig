@@ -17,25 +17,26 @@
 [alias]
 	a = add
 	ap = add -p
-	b= branch
+	b = branch
 	c = commit
-	cm= commit -m
+	cm = commit -m
 	ca = commit --amend
     can = commit --amend --no-edit
 	co = checkout
 	cob = checkout -b
-	d= diff
+	d = diff
     dc = diff --cached
+    dn = diff --name-only
     d1 = diff HEAD~
     d2 = diff HEAD~~
     d3 = diff HEAD~~~
     d4 = diff HEAD~~~~
     d5 = diff HEAD~~~~~
-	l= log
-	lg= log --graph --oneline --decorate=full
+	l = log
+	lg = log --graph --oneline --decorate=full
 	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
-	lp= log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
-	p= push
-	ba= branch -a
-	bm= branch -m
-	s= status
+	lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+	p = push
+	ba = branch -a
+	bm = branch -m
+	s = status
