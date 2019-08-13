@@ -8,7 +8,7 @@ fi
 
 # default
 # export PS1='[\u@\h \W]\$'
-export PS1='\[\e[1;35m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\]$(__git_ps1)\$ '
+export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(__git_ps1)\$ '
 
 # git
 source /usr/local/etc/bash_completion.d/git-prompt.sh

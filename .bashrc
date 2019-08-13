@@ -1,10 +1,3 @@
-# phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-# To enable PHP version info in your shell prompt, please set PHPBREW_SET_PROMPT=1
-export PHPBREW_SET_PROMPT=1
-# To enable .phpbrewrc file searching, please export the following variable:
-export PHPBREW_RC_ENABLE=1
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -41,15 +34,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="~"
 
-# Ruby on Rails
-alias be="bundle exec"
-
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
 
-# rails
-alias bi="bundle install --path vendor/bundle"
-alias be="bundle exec"
+# Ruby on Rails
+#alias be="bundle exec"
+#alias bi="bundle install --path vendor/bundle"
+#alias be="bundle exec"
 
 # start corrent directory in an opened window
 alias vs="code -r ."
