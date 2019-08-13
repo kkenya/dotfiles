@@ -11,23 +11,28 @@ fi
 export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(__git_ps1)\$ '
 
 # git
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -f '/usr/local/etc/bash_completion.d/git-prompt.sh' ]; then . '/usr/local/etc/bash_completion.d/git-prompt.sh'; fi
+if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then . '/usr/local/etc/bash_completion.d/git-completion.bash'; fi
 GIT_PS1_SHOWDIRTYSTATE=true
-
-# go
-export GOPATH=$HOME/go
 
 # 重複舌履歴と空白を含む履歴を保存しない
 export HISTCONTROL=ignoreboth # shorthand for 'gnorespace' and 'ignoredups'
 export HISTSIZE=2000
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# go
+if [ -d "$HOME/go" ]; then
+    export GOPATH=$HOME/go
+fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s06540/google-cloud-sdk/path.bash.inc' ]; then . '/Users/s06540/google-cloud-sdk/path.bash.inc'; fi
+# rbenv
+if [ -f "$HOME/.rbenv/bin" ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# composer
+if [ -f "$HOME/.composer/vendor/bin" ]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
+
 
 # google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
