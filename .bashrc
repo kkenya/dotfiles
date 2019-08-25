@@ -15,9 +15,18 @@ port() {
 	lsof -i:$1
 }
 
+# restart shell
+restart() {
+    exec -l $SHELL
+}
+
 # cd after mkdir
 mkcd() {
     mkdir $1 && cd $_
+}
+
+findfile() {
+    mdfind -onlyin ~ $1
 }
 
 # built in
@@ -29,6 +38,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="~"
 
+alias f="mdfind"
+alias fn="mdfind --name"
+
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
 
@@ -39,4 +51,5 @@ alias ls="exa"
 
 # start corrent directory in an opened window
 alias vs="code -r ."
+alias ins="code-insiders -r ."
 
