@@ -200,26 +200,29 @@ set iskeyword+=- "ハイフンを境界文字から外す
 "nmap <C-G><C-G> :vimgrep /<C-R><C-W>/j **/*
 ""Quickfix結果を別ウィンドウで開く
 "autocmd QuickFixCmdPost *grep* cwindow
-"
-""拡張子に合わせていい感じに
-"filetype on
-"filetype indent on
-"filetype plugin on
-"
+
 ""折りたたみ
 ""  シンタックスで折りたたみ
 "set foldmethod=syntax
 "set foldlevel=100
 "set foldcolumn=3
-"
+
+"ファイル形式の検出を有効化
+"filetype on
+"ファイル形式別プラグインのロードを有効化
+"filetype plugin on
+"ファイル形式別インデントのロードを有効化
+"filetype indent on
+"検出		プラグイン	インデント ~
+"有効		有効		有効
+filetype plugin indent on
+
 ""拡張子による設定変更
-"""sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
-"autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
-"autocmd FileType c           setlocal sw=4 sts=4 ts=4 noet
-"autocmd FileType go          setlocal sw=4 sts=4 ts=4 noet
-"autocmd FileType erb         setlocal sw=4 sts=4 ts=4 noet
-"autocmd FileType html        setlocal sw=4 sts=4 ts=4 noet
-autocmd Filetype yml		 setlocal sw=2 sts=2 ts=2 et
-"autocmd BufNewFile,BufRead *.{md,txt} setlocal filetype=markdown
+"BufNewFile 存在しないファイルの編集を始めたとき
+"BufReadPre 新しいバッファの編集を始めたとき。ファイルを読み込む前
+"sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
+autocmd BufNewFile,BufRead *.js setlocal sw=2 sts=2 ts=2 et
+autocmd BufNewFile,BufRead *.yml setlocal sw=2 sts=2 ts=2 et
+autocmd BufNewFile,BufRead *.{md,txt} setlocal filetype=markdown
 "autocmd BufNewFile,BufRead *.{md,txt} colorscheme slate
-autocmd BufWritePre * :%s/\s\+$//ge
+"autocmd BufWritePre * :%s/\s\+$//ge
