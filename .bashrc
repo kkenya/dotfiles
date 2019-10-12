@@ -41,9 +41,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="~"
 
-alias f="mdfind"
-alias fn="mdfind --name"
-
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
 
@@ -55,4 +52,9 @@ alias ls="exa"
 # start corrent directory in an opened window
 alias vs="code -r ."
 alias ins="code-insiders -r ."
+
+# othier
+alias f="mdfind"
+alias fn="mdfind --name"
+alias md="code-insiders -r ~/Documents/md"
 
