@@ -4,3 +4,7 @@ set completion-ignore-case on
 set colored-stats on
 # 補完の接頭辞をカラフルに
 set colored-completion-prefix on
+# ディレクトリの補完時に絶対パスに展開しない
+set expand-tilde off
+# ベル無効
+set bell-style none

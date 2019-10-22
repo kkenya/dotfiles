@@ -1,3 +1,9 @@
+# ^wで削除する単語の境界に/を含める
+if [[ -t 1 ]]; then
+    stty werase undef
+    bind '"\C-w":unix-filename-rubout'
+fi
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -6,11 +12,18 @@ export NVM_DIR="$HOME/.nvm"
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
-# ^wで削除する単語の境界に/を含める
-if [[ -t 1 ]]; then
-    stty werase undef
-    bind '"\C-w":unix-filename-rubout'
-fi
+# Bash 4+ required
+# READLINE_LINE The contents of the Readline line buffer, for use with ‘bind -x’
+# READLINE_POINT The position of the insertion point in the Readline line buffer, for use with ‘bind -x’
+function peco-ghq(){
+    local selected=$(ghq list --full-path | peco --query "${READLINE_LINE}")
+    if [ -n "${selected}" ]; then
+        READLINE_LINE="cd ${selected}"
+        READLINE_POINT=${#READLINE_LINE}
+        #cd ${selected}
+    fi
+}
+bind -x '"\C-]": peco-ghq'
 
 # show pid port
 # usage port 8080"
