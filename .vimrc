@@ -222,7 +222,7 @@ filetype plugin indent on
 "BufReadPre 新しいバッファの編集を始めたとき。ファイルを読み込む前
 "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
 autocmd BufNewFile,BufRead *.js setlocal sw=2 sts=2 ts=2 et
-autocmd BufNewFile,BufRead *.yml setlocal sw=2 sts=2 ts=2 et
+autocmd BufNewFile,BufRead *.{yml,yaml} setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.{md,txt} setlocal filetype=markdown
 "autocmd BufNewFile,BufRead *.{md,txt} colorscheme slate
 "autocmd BufWritePre * :%s/\s\+$//ge

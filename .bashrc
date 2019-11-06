@@ -25,6 +25,52 @@ function peco-ghq(){
 }
 bind -x '"\C-]": peco-ghq'
 
+function peco-history() {
+    local COUNT=$(history | wc -l)
+    # (( expression )) 'arithmetic expression'
+    # $(( expression )) 'arithmetic expression return result'
+    #local FIRST=$((-1*(LINE_COUNT-1)))
+    local PRE_COUNT=$((LINE_COUNT-1))
+
+    if [[ "$PRE_COUNT" == 0 ]] ; then
+        # HISTCMD 'The history number, or index in the history list, of the current command. If HISTCMD is unset, it loses its special properties, even if it is subsequently reset.'
+        # remove history 'peco-history'
+        history -d $((HISTCMD-1))
+        echo "No history" >&2
+        return
+    fi
+
+    local CMD=$(fc -l $FIRST | sort -k 2 -k 1nr | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
+
+    # -n 'string is not null.'
+    if [[ -n "$CMD" ]] ; then
+        # Replace the last entry, "peco-history", with $CMD
+        history -s $CMD
+
+        if type osascript > /dev/null 2>&1 ; then
+            # Send UP keystroke to console
+            (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
+        fi
+
+      # Uncomment below to execute it here directly
+      # echo $CMD >&2
+      # eval $CMD
+  else
+      # Remove the last entry, "peco-history"
+      history -d $((HISTCMD-1))
+  fi
+}
+
+#function peco-history() {
+#    local tac
+#    which gtac &> /dev/null && tac="gtac" || \
+#        which tac &> /dev/null && tac="tac" || \
+#        tac="tail -r"
+#    READLINE_LINE=$(HISTTIMEFORMAT= history | $tac | sed -e 's/^\s*[0-9]\+\s\+//' | awk '!a[$0]++' | peco --query "$READLINE_LINE")
+#    READLINE_POINT=${#READLINE_LINE}
+#}
+bind -x '"\C-r": peco-history'
+
 # show pid port
 # usage port 8080"
 port() {
