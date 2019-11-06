@@ -1,6 +1,5 @@
 [user]
-	name = Kenya Kawatsu
-	email = 3982ne@gmail.com
-
+	name = 
+	email = 
 [commit]
     template = ~/.git_template/fto

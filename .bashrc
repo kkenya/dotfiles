@@ -112,8 +112,4 @@ alias ls="exa"
 alias vs="code -r ."
 alias ins="code-insiders -r ."
 
-# othier
-alias f="mdfind"
-alias fn="mdfind --name"
-alias md="code-insiders -r ~/Documents/md"
-
+#find /etc/httpd  -type f -print | xargs grep 'VirtualHost'

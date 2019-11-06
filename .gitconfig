@@ -4,6 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	safecrlf = true
+    ignorecase=false
 
 [color]
 	ui = auto
@@ -30,12 +31,14 @@
     d4 = diff HEAD~~~~
     d5 = diff HEAD~~~~~
 	l = log
+    lc = git rev-list --count HEAD ^master
 	lg = log --graph --oneline --decorate=full
 	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
 	lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
 	p = push
 	ba = branch -a
 	bm = branch -m
+    rebase-from-master = git rebase -i HEAD~$(git rev-list --count HEAD ^master)
 	s = status
 
 [secrets]
