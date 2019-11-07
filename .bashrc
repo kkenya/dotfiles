@@ -16,8 +16,8 @@ export NVM_DIR="$HOME/.nvm"
 # READLINE_LINE The contents of the Readline line buffer, for use with ‘bind -x’
 # READLINE_POINT The position of the insertion point in the Readline line buffer, for use with ‘bind -x’
 function peco-ghq(){
-    local selected=$(ghq list --full-path | peco --query "${READLINE_LINE}")
-    if [ -n "${selected}" ]; then
+    local SELECTED=$(ghq list --full-path | peco --query "${READLINE_LINE}")
+    if [[ -n "${SELECTED}" ]]; then
         READLINE_LINE="cd ${selected}"
         READLINE_POINT=${#READLINE_LINE}
         #cd ${selected}
@@ -30,7 +30,7 @@ function peco-history() {
     # (( expression )) 'arithmetic expression'
     # $(( expression )) 'arithmetic expression return result'
     #local FIRST=$((-1*(LINE_COUNT-1)))
-    local PRE_COUNT=$((LINE_COUNT-1))
+    local PRE_COUNT=$((COUNT-1))
 
     if [[ "$PRE_COUNT" == 0 ]] ; then
         # HISTCMD 'The history number, or index in the history list, of the current command. If HISTCMD is unset, it loses its special properties, even if it is subsequently reset.'
@@ -40,25 +40,37 @@ function peco-history() {
         return
     fi
 
-    local CMD=$(fc -l $FIRST | sort -k 2 -k 1nr | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
+    # fc -l $PRE_COUNT '最近のコマンド$PRE_COUNT個が出力されます'
+    # -k POS1[,POS2] '-K POS1[,POS2] ソートフィールド指定の POSIX 形式。今後はこちらが推奨される。行の POS1 から POS2 までのフィールドを指定する。 POS2 を含む。 POS2 が省略されたら行末まで。 フィールドと文字位置はそれぞれ 0 から数えはじめる。'
+    # sort -k 2 '２番めのフィールドで並び替える "1852	 git s" ならコマンドの入力履歴である "git s"が対償のフィールドになる'
+    # sort -k 2 -k 1 'ソート条件を指定する場合-kを複数書く'
+    # sort -b '各行の比較の際に、行頭の空白を無視する。'
+    # uniq -f 1 '区切り文字で区切られたフィールドの１つ目を無視する'
+    # local SELECTED=$(fc -l -$PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sed -E 's/^[0-9]+[[:blank:]]+//' | peco --query "${READLINE_LINE}")
+    local SELECTED=$(fc -l -$PRE_COUNT | sed -E 's/^[0-9]+[[:blank:]]+//' | sort | uniq | peco --query "${READLINE_LINE}")
 
+    #local CMD=$(fc -l $PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
     # -n 'string is not null.'
-    if [[ -n "$CMD" ]] ; then
-        # Replace the last entry, "peco-history", with $CMD
-        history -s $CMD
+    #if [[ -n "$SELECTED" ]] ; then
+    #    # Replace the last entry, "peco-history", with $CMD
+    #    history -s $SELECTED
 
-        if type osascript > /dev/null 2>&1 ; then
-            # Send UP keystroke to console
-            (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
-        fi
+    #    #if type osascript > /dev/null 2>&1 ; then
+    #    #    # Send UP keystroke to console
+    #    #    (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
+    #    #fi
 
-      # Uncomment below to execute it here directly
-      # echo $CMD >&2
-      # eval $CMD
-  else
-      # Remove the last entry, "peco-history"
-      history -d $((HISTCMD-1))
-  fi
+    #  # Uncomment below to execute it here directly
+    #  # echo $CMD >&2
+    #  # eval $CMD
+    if [[ -n "${SELECTED}" ]]; then
+        echo ${SELECTED}
+        READLINE_LINE="${SELECTED}"
+        READLINE_POINT=${#READLINE_LINE}
+    else
+        # Remove the last entry, "peco-history"
+        history -d $((HISTCMD-1))
+    fi
 }
 
 #function peco-history() {
