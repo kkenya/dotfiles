@@ -10,7 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+#[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # Bash 4+ required
 # READLINE_LINE The contents of the Readline line buffer, for use with ‘bind -x’
@@ -18,7 +18,7 @@ export NVM_DIR="$HOME/.nvm"
 function peco-ghq(){
     local SELECTED=$(ghq list --full-path | peco --query "${READLINE_LINE}")
     if [[ -n "${SELECTED}" ]]; then
-        READLINE_LINE="cd ${selected}"
+        READLINE_LINE="cd ${SELECTED}"
         READLINE_POINT=${#READLINE_LINE}
         #cd ${selected}
     fi
@@ -46,8 +46,11 @@ function peco-history() {
     # sort -k 2 -k 1 'ソート条件を指定する場合-kを複数書く'
     # sort -b '各行の比較の際に、行頭の空白を無視する。'
     # uniq -f 1 '区切り文字で区切られたフィールドの１つ目を無視する'
-    # local SELECTED=$(fc -l -$PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sed -E 's/^[0-9]+[[:blank:]]+//' | peco --query "${READLINE_LINE}")
+    #local SELECTED=$(fc -l -$PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sed -E 's/^[0-9]+[[:blank:]]+//' | peco --query "${READLINE_LINE}") 
+    #local  SELECTED=$(fc -l -$PRE_COUNT | sed -E 's/^[0-9]+[[:blank:]]+//' | sort | uniq | peco | head -n 1)
     local SELECTED=$(fc -l -$PRE_COUNT | sed -E 's/^[0-9]+[[:blank:]]+//' | sort | uniq | peco --query "${READLINE_LINE}")
+        READLINE_LINE="${SELECTED}"
+        READLINE_POINT=${#READLINE_LINE}
 
     #local CMD=$(fc -l $PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
     # -n 'string is not null.'
@@ -63,24 +66,11 @@ function peco-history() {
     #  # Uncomment below to execute it here directly
     #  # echo $CMD >&2
     #  # eval $CMD
-    if [[ -n "${SELECTED}" ]]; then
-        echo ${SELECTED}
-        READLINE_LINE="${SELECTED}"
-        READLINE_POINT=${#READLINE_LINE}
-    else
-        # Remove the last entry, "peco-history"
-        history -d $((HISTCMD-1))
-    fi
+    #else
+    #    # Remove the last entry, "peco-history"
+    #    history -d $((HISTCMD-1))
+    #fi
 }
-
-#function peco-history() {
-#    local tac
-#    which gtac &> /dev/null && tac="gtac" || \
-#        which tac &> /dev/null && tac="tac" || \
-#        tac="tail -r"
-#    READLINE_LINE=$(HISTTIMEFORMAT= history | $tac | sed -e 's/^\s*[0-9]\+\s\+//' | awk '!a[$0]++' | peco --query "$READLINE_LINE")
-#    READLINE_POINT=${#READLINE_LINE}
-#}
 bind -x '"\C-r": peco-history'
 
 # show pid port

@@ -47,7 +47,7 @@ else
 fi
 
 echo "Updating Homebrew"
-brew doctor
+#brew doctor
 brew update
 
 # confirm that dotfiles directory exists
@@ -61,7 +61,7 @@ if [ ! -d ${DOT_DIR} ]; then
     echo "Download dotfiles is completed!"
 else
     echo "Dotfiles already exists" 1>&2
-    exit 1
+    #exit 1
 fi
 
 cd ${DOT_DIR}
