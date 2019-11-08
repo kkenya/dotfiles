@@ -1,8 +1,9 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+# 重複した履歴を保存しない
+setopt HIST_IGNORE_DUPS
+#
 # The following lines were added by compinstall
 zstyle :compinstall filename "${HOME}/.zshrc"
 
@@ -13,11 +14,21 @@ compinit
 # zsh-zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# ^wで削除する単語の境界に/を含める
-#if [[ -t 1 ]]; then
-#    stty werase undef
-#    bind '"\C-w":unix-filename-rubout'
-#fi
+# 単語の区切りとみなさない文字を定義する
+export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
+
+# git completion
+[[ -f /usr/local/share/zsh/site-functions ]] && . /usr/local/share/zsh/site-functions
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+[[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]] && . /usr/local/etc/bash_completion.d/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_HIDE_IF_PWD_IGNORED=false
+setopt PROMPT_SUBST
+PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -40,6 +51,38 @@ export NVM_DIR="$HOME/.nvm"
 #}
 #bind -x '"\C-]": peco-ghq'
 #
+#function peco-history() {
+#  local tac_cmd
+#  which gtac &> /dev/null && tac_cmd=gtac || tac_cmd=tac
+#  BUFFER=$(fc -l -n 1 | eval $tac_cmd | peco --query "${LBUFFER}") 
+#  CURSOR=${#BUFFER}
+#  zle -R -c               # refresh
+#}
+
+function peco-history() {
+    local COUNT=$(history | wc -l)
+    # (( expression )) 'arithmetic expression'
+    # $(( expression )) 'arithmetic expression return result'
+    #local FIRST=$((-1*(LINE_COUNT-1)))
+    local PRE_COUNT=$((COUNT-1))
+
+    if [[ "$PRE_COUNT" == 0 ]] ; then
+        # HISTCMD 'The history number, or index in the history list, of the current command. If HISTCMD is unset, it loses its special properties, even if it is subsequently reset.'
+        # remove history 'peco-history'
+        history -d $((HISTCMD-1))
+        echo "No history" >&2
+        return
+    fi
+
+    local SELECTED=$(fc -l -$PRE_COUNT | sed -E 's/^[[:blank:]]*[0-9]+[[:blank:]]+//' | sort | uniq | peco --query "${READLINE_LINE}")
+    BUFFER=${SELECTED}
+    CURSOR=${#BUFFER}
+    # refresh
+    zle -R -c               
+}
+zle -N peco-history
+bindkey '^r' peco-history
+
 #function peco-history() {
 #    local COUNT=$(history | wc -l)
 #    # (( expression )) 'arithmetic expression'
@@ -120,6 +163,9 @@ alias ~="~"
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
 
+# A cat(1) clone with wings. https://github.com/sharkdp/bat
+alias cat="bat"
+
 # Ruby on Rails
 #alias be="bundle exec"
 #alias bi="bundle install --path vendor/bundle"
@@ -130,4 +176,3 @@ alias vs="code -r ."
 alias ins="code-insiders -r ."
 
 #find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
-export PATH="/usr/local/sbin:$PATH"

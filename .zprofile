@@ -1,26 +1,6 @@
-# Get the aliases and functions
-#if [ -f ~/.bashrc ]; then
-#    . ~/.bashrc
-#fi
-
-# git completion
-[[ -f /usr/local/share/zsh/site-functions ]] && . /usr/local/share/zsh/site-functions
-[[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]] && . /usr/local/etc/bash_completion.d/git-prompt.sh
-
-
 # default
 # export PS1='[\u@\h \W]\$'
 # export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(__git_ps1)\$ '
-setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
-
-# 重複した履歴と空白を含む履歴を保存しない
-export HISTCONTROL=ignoreboth # shorthand for 'gnorespace' and 'ignoredups'
-export HISTSIZE=2000
-
-# git
-#if [ -f '/usr/local/etc/bash_completion.d/git-prompt.sh' ]; then . '/usr/local/etc/bash_completion.d/git-prompt.sh'; fi
-#if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then . '/usr/local/etc/bash_completion.d/git-completion.bash'; fi
-#GIT_PS1_SHOWDIRTYSTATE=true
 
 # go
 if [[ -d "$HOME/work/go" ]]; then
@@ -56,6 +36,8 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # aws cli
 export PATH=~/.local/bin:$PATH
+
+export PATH="/usr/local/sbin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/s06540/.sdkman"
