@@ -21,14 +21,28 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 [[ -f /usr/local/share/zsh/site-functions ]] && . /usr/local/share/zsh/site-functions
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 [[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]] && . /usr/local/etc/bash_completion.d/git-prompt.sh
+# unstaged (*) and staged (+) changes will be shown next to the branch name.
 GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto"
+#  If something is stashed, then a '$' will be shown next to the branch name.
+GIT_PS1_SHOWSTASHSTATE=false
+#GIT_PS1_SHOWUPSTREAM
+#GIT_PS1_DESCRIBE_STYLE
+# If there're untracked files, then a '%' will be shown next to the branch name.
+GIT_PS1_SHOWUNTRACKEDFILES=false
+# difference between HEAD and its upstream
+GIT_PS1_SHOWUPSTREAM=false
+# colored hint about the current dirty state
 GIT_PS1_SHOWCOLORHINTS=true
+# If you would like __git_ps1 to do nothing in the case when the current directory is set up to be ignored by git
 GIT_PS1_HIDE_IF_PWD_IGNORED=false
 setopt PROMPT_SUBST
-PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
+#PS1='[%F{green}%n%f@%m %c$(__git_ps1 " (%s)")]\$ '
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+# %n
+# %m
+# %~
+# %#
+PS1='%F{green}%n%f@%m%:%F{cyan}%~%f%F{magenta}$(__git_ps1)%f%# '
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -152,9 +166,10 @@ findfile() {
 }
 
 # built in
-alias ll="ls -la"
+alias ll="ls -lah"
 alias rm="rm -i"
 alias type="type -a"
+alias du="du -h"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -176,3 +191,4 @@ alias vs="code -r ."
 alias ins="code-insiders -r ."
 
 #find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
+#grep -n -3 master
