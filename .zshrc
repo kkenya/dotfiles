@@ -3,14 +3,14 @@ HISTSIZE=50000
 SAVEHIST=10000
 # 重複した履歴を保存しない
 setopt HIST_IGNORE_DUPS
-#
-# The following lines were added by compinstall
+
 zstyle :compinstall filename "${HOME}/.zshrc"
+# 大文字、小文字を無視して保管する
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-#
+
 # zsh-zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -24,13 +24,13 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 # unstaged (*) and staged (+) changes will be shown next to the branch name.
 GIT_PS1_SHOWDIRTYSTATE=true
 #  If something is stashed, then a '$' will be shown next to the branch name.
-GIT_PS1_SHOWSTASHSTATE=false
+#GIT_PS1_SHOWSTASHSTATE=false
 #GIT_PS1_SHOWUPSTREAM
 #GIT_PS1_DESCRIBE_STYLE
 # If there're untracked files, then a '%' will be shown next to the branch name.
-GIT_PS1_SHOWUNTRACKEDFILES=false
+#GIT_PS1_SHOWUNTRACKEDFILES=false
 # difference between HEAD and its upstream
-GIT_PS1_SHOWUPSTREAM=false
+#GIT_PS1_SHOWUPSTREAM=false
 # colored hint about the current dirty state
 GIT_PS1_SHOWCOLORHINTS=true
 # If you would like __git_ps1 to do nothing in the case when the current directory is set up to be ignored by git
@@ -42,7 +42,7 @@ setopt PROMPT_SUBST
 # %m
 # %~
 # %#
-PS1='%F{green}%n%f@%m%:%F{cyan}%~%f%F{magenta}$(__git_ps1)%f%# '
+PS1='%F{green}%n%f@%m[%F{cyan}%~%f]$(__git_ps1) %# '
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

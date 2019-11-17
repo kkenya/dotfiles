@@ -1,7 +1,3 @@
-# default
-# export PS1='[\u@\h \W]\$'
-# export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(__git_ps1)\$ '
-
 # go
 if [[ -d "$HOME/work/go" ]]; then
     export GOPATH="$HOME/work/go"
