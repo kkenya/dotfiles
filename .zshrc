@@ -17,6 +17,9 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # 単語の区切りとみなさない文字を定義する
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
+# ^uでカーソルから行頭までを削除する
+# default kill-whole-line
+bindkey \^U backward-kill-line
 # git completion
 [[ -f /usr/local/share/zsh/site-functions ]] && . /usr/local/share/zsh/site-functions
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
