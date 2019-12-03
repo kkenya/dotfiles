@@ -21,6 +21,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-jp/vimdoc-ja'
 " fzf(If installed using Homebrew)
 Plug '/usr/local/opt/fzf'
+" typescript syntax highlight
+Plug 'leafgarland/typescript-vim'
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
