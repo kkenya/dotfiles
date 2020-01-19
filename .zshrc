@@ -1,6 +1,18 @@
+# zshrcが読みこれまれている場合読み込みをスキップする
+if [ -z $ZSH_ENV_LOADED ]; then
+  export PATH="${HOME}/local/bin:${PATH}"
+  #export $ZSH_ENV_LOADED="1"
+else
+  print ".zshenv の 読み込みをスキップしました \n"
+fi
+
 HISTFILE="${HOME}/.zsh_history"
+# メモリに保存される履歴の件数
 HISTSIZE=50000
+# 履歴ファイルに保存される履歴の件数
 SAVEHIST=10000
+# 開始と終了を記録
+setopt EXTENDED_HISTORY
 # 重複した履歴を保存しない
 setopt HIST_IGNORE_DUPS
 
@@ -11,13 +23,18 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 autoload -Uz compinit
 compinit
 
+# zshrc.zwcが古い場合にコンパイルする
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
+fi
+
 # zsh-zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # 単語の区切りとみなさない文字を定義する
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
-# ^uでカーソルから行頭までを削除する
+# ^uでカーソルから行頭までを削除
 # default kill-whole-line
 bindkey \^U backward-kill-line
 # git completion
@@ -193,5 +210,50 @@ alias cat="bat"
 alias vs="code -r ."
 alias ins="code-insiders -r ."
 
-#find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
-#grep -n -3 master
+# find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
+# grep -n -3 master
+# git d origin/feature/year_2020 --name-only | grep php | xargs git diff origin/feature/year_2020
+#
+# go
+if [[ -d "$HOME/work/go" ]]; then
+    export GOPATH="$HOME/work/go"
+    export GOROOT="$(brew --prefix golang)/libexec" export PATH="$GOPATH/bin:$PATH"
+    export PATH="$GOROOT/bin:$PATH"
+fi
+
+# rbenv
+if [[ -d "$HOME/.rbenv/bin" ]]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# composer
+if [[ -d "$HOME/.composer/vendor/bin" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
+
+# google-cloud-sdk
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'; fi
+# The next line enables shell command completion for gcloud.
+#if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# mysql5.7
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# aws cli
+export PATH=~/.local/bin:$PATH
+
+export PATH="/usr/local/sbin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/s06540/.sdkman"
+[[ -s "/Users/s06540/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
+
+#if (which zprof > /dev/null) ;then
+#  zprof | less
+#fi
