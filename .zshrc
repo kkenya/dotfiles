@@ -93,7 +93,7 @@ alias du="du -h"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias killport="kill $(lsof -t -i:)"
+#alias killport="kill $(lsof -t -i:)"
 
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
