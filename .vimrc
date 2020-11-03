@@ -197,7 +197,7 @@ set cursorline "横ラインを引く
 set autowrite "makeコマンド実行時にファイルの内容を自動的に保存する
 set clipboard+=unnamed "クリップボードでコピーを保持する
 set iskeyword+=- "ハイフンを境界文字から外す
-set nowrap "折返しをしない
+set nowrap "折り返しをしない
 
 "vimgrep関連のマッピング
 "ctrl-g2回でカーソル文字列をvimgrep(jumpはしない.オプションj)

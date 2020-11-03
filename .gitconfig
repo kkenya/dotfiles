@@ -13,7 +13,7 @@
 	prune = true
 
 [commit]
-	template = /Users/s06540/.gittemplate/message.txt
+	template = ~/.gittemplate/message.txt
 
 [secrets]
 	providers = git secrets --aws-provider
