@@ -12,35 +12,8 @@
 [fetch]
 	prune = true
 
-[alias]
-	a = add
-	ap = add -p
-	b = branch
-	c = commit
-	cm = commit -m
-	ca = commit --amend
-    can = commit --amend --no-edit
-	co = checkout
-	cob = checkout -b
-	d = diff
-    dc = diff --cached
-    dn = diff --name-only
-    d1 = diff HEAD~
-    d2 = diff HEAD~~
-    d3 = diff HEAD~~~
-    d4 = diff HEAD~~~~
-    d5 = diff HEAD~~~~~
-	l = log
-    lp = log -p
-    lc = git rev-list --count HEAD ^master
-	lg = log --graph --oneline --decorate=full
-	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
-    # lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
-	p = push
-	ba = branch -a
-	bm = branch -m
-    rebase-from-master = git rebase -i HEAD~$(git rev-list --count HEAD ^master)
-	s = status
+[commit]
+	template = /Users/s06540/.gittemplate/message.txt
 
 [secrets]
 	providers = git secrets --aws-provider
@@ -55,3 +28,38 @@
 
 [ghq]
 	root = ~/work/go/src
+
+[alias]
+	a = add
+	ap = add -p
+	b = branch
+	c = commit
+	cm = commit -m
+	ca = commit --amend
+    can = commit --amend --no-edit
+    #co = checkout
+	cob = checkout -b
+	d = diff
+    dc = diff --cached
+    dn = diff --name-only
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+	l = log
+    lp = log -p
+    ln = log --name-only
+    lc = git rev-list --count HEAD ^master
+	lg = log --graph --oneline --decorate=full
+	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
+    # lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+	p = push
+	ba = branch -a
+	bm = branch -m
+    # nv = --no-verify
+    rebase-from-master = git rebase -i HEAD~$(git rev-list --count HEAD ^master)
+	s = status
+	sw = switch
+	swc = switch --create # -c
+    # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'
