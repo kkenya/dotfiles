@@ -58,3 +58,5 @@ export PATH=~/.local/bin:$PATH
 export SDKMAN_DIR="/Users/s06540/.sdkman"
 [[ -s "/Users/s06540/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
 
+
+export PATH="$HOME/.poetry/bin:$PATH"

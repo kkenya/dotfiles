@@ -15,10 +15,14 @@ SAVEHIST=10000
 setopt EXTENDED_HISTORY
 # 重複した履歴を保存しない
 setopt HIST_IGNORE_DUPS
+# 履歴を共有する
+# setopt share_history
 
 zstyle :compinstall filename "${HOME}/.zshrc"
 # 大文字、小文字を無視して保管する
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+
+fpath+=~/.zfunc
 
 autoload -Uz compinit
 compinit
@@ -250,10 +254,15 @@ export PATH=~/.local/bin:$PATH
 
 export PATH="/usr/local/sbin:$PATH"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/s06540/.sdkman"
-[[ -s "/Users/s06540/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
+# python version manager
+if [[ -d "$HOME/.poetry/bin" ]]; then
+    export PATH="$HOME/.poetry/bin:$PATH"
+fi
 
 #if (which zprof > /dev/null) ;then
 #  zprof | less
 #fi
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/s06540/.sdkman"
+[[ -s "/Users/s06540/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
+
