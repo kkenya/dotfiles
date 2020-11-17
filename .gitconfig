@@ -12,9 +12,6 @@
 [fetch]
 	prune = true
 
-[commit]
-	template = ~/.gittemplate/message.txt
-
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -25,9 +22,6 @@
 
 [init]
 	templateDir = /Users/kawadzukenya/.git-templates/git-secrets
-
-[ghq]
-	root = ~/work/go/src
 
 [alias]
 	a = add
