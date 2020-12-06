@@ -12,8 +12,10 @@
 [fetch]
 	prune = true
 
-[commit]
-	template = ~/.gittemplate/message.txt
+[pull]
+	rebase = false
+#	rebase true
+#	ff = only
 
 [secrets]
 	providers = git secrets --aws-provider
@@ -23,8 +25,8 @@
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-[init]
-	templateDir = /Users/kawadzukenya/.git-templates/git-secrets
+#[init]
+#	templateDir = /Users/kawadzukenya/.git-templates/git-secrets
 
 [ghq]
 	root = ~/work/go/src
@@ -54,6 +56,7 @@
 	lg = log --graph --oneline --decorate=full
 	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
     # lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+    # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'
 	p = push
 	ba = branch -a
 	bm = branch -m
@@ -62,4 +65,3 @@
 	s = status
 	sw = switch
 	swc = switch --create # -c
-    # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'

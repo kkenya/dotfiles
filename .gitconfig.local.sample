@@ -2,4 +2,4 @@
 	name = 
 	email = 
 [commit]
-    template = ~/.git_template/fto
+    template = ~/.gittemplate/message

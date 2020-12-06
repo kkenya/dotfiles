@@ -6,6 +6,12 @@ else
   print "skipped to read .zshenv\n"
 fi
 
+# dotfilesで管理したくない読み込み設定を追加
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
 HISTFILE="${HOME}/.zsh_history"
 # メモリに保存される履歴の件数
 HISTSIZE=50000
@@ -124,7 +130,20 @@ findfile() {
 }
 
 # completion ------------------------------------------------------------------------------------------------------------------------------------
-# npm complete
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword
@@ -216,3 +235,6 @@ export SDKMAN_DIR="/Users/s06540/.sdkman"
 export SDKMAN_DIR="/Users/s06540/.sdkman"
 [[ -s "/Users/s06540/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
 
+export PATH="/usr/local/opt/mongodb-community@4.2/bin:$PATH"
+
+source <(npm completion)
