@@ -12,16 +12,9 @@
 [fetch]
 	prune = true
 
-[secrets]
-	providers = git secrets --aws-provider
-	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
-	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-	allowed = AKIAIOSFODNN7EXAMPLE
-	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-
-[init]
-	templateDir = /Users/kawadzukenya/.git-templates/git-secrets
+[pull]
+	rebase = false
+#	ff = only
 
 [alias]
 	a = add
@@ -48,6 +41,7 @@
 	lg = log --graph --oneline --decorate=full
 	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
     # lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+    # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'
 	p = push
 	ba = branch -a
 	bm = branch -m
@@ -56,4 +50,3 @@
 	s = status
 	sw = switch
 	swc = switch --create # -c
-    # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'
