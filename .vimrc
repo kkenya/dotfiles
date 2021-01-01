@@ -11,12 +11,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 "" monokai風カラー
-Plug 'tomasr/molokai'
+"Plug 'tomasr/molokai'
 " statusバーをpowerline風にする
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 " ドキュメントを日本語化
 Plug 'vim-jp/vimdoc-ja'
 " fzf(If installed using Homebrew)
@@ -85,9 +85,9 @@ set number      "行番号表示on
 let no_buffers_menu=1
 
 "" molokaiスキームを読み込む
-let g:rehash256 = 1
-let g:molokai_original = 1
-colorscheme molokai
+"let g:rehash256 = 1
+"let g:molokai_original = 1
+"colorscheme molokai
 
 set mousemodel=popup "右クリックでポップアップメニューを表示する
 set t_Co=256 "vimを256色に対応する
@@ -108,7 +108,7 @@ set titleold="Terminal" "タイトルが復元できない場合
 set titlestring=%F "ウインドウタイトルを設定
 
 "ステータス行の表示設定
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 " 補完ウィンドウの設定
 set completeopt=menuone
@@ -123,12 +123,12 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+"let g:airline_theme = 'powerlineish'
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline_skip_empty_sections = 1
 
 "*****************************************************************************
 "" Mappings
