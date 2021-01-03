@@ -9,9 +9,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# phpbrew
-#[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
 # Bash 4+ required
 # READLINE_LINE The contents of the Readline line buffer, for use with ‘bind -x’
 # READLINE_POINT The position of the insertion point in the Readline line buffer, for use with ‘bind -x’
@@ -51,25 +48,6 @@ function peco-history() {
     local SELECTED=$(fc -l -$PRE_COUNT | sed -E 's/^[0-9]+[[:blank:]]+//' | sort | uniq | peco --query "${READLINE_LINE}")
         READLINE_LINE="${SELECTED}"
         READLINE_POINT=${#READLINE_LINE}
-
-    #local CMD=$(fc -l $PRE_COUNT | sort -b -k 2,2 -k 1nr,1 | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
-    # -n 'string is not null.'
-    #if [[ -n "$SELECTED" ]] ; then
-    #    # Replace the last entry, "peco-history", with $CMD
-    #    history -s $SELECTED
-
-    #    #if type osascript > /dev/null 2>&1 ; then
-    #    #    # Send UP keystroke to console
-    #    #    (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
-    #    #fi
-
-    #  # Uncomment below to execute it here directly
-    #  # echo $CMD >&2
-    #  # eval $CMD
-    #else
-    #    # Remove the last entry, "peco-history"
-    #    history -d $((HISTCMD-1))
-    #fi
 }
 bind -x '"\C-r": peco-history'
 
@@ -104,11 +82,6 @@ alias ~="~"
 
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
-
-# Ruby on Rails
-#alias be="bundle exec"
-#alias bi="bundle install --path vendor/bundle"
-#alias be="bundle exec"
 
 # start corrent directory in an opened window
 alias vs="code -r ."
