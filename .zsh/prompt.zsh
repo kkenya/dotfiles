@@ -15,7 +15,15 @@ GIT_PS1_SHOWCOLORHINTS=true
 # If you would like __git_ps1 to do nothing in the case when the current directory is set up to be ignored by git
 GIT_PS1_HIDE_IF_PWD_IGNORED=false
 setopt PROMPT_SUBST
-#PS1='[%F{green}%n%f@%m %c$(__git_ps1 " (%s)")]\$ '
+#PS1='%F{green}%n%f@%m[%F{cyan}%~%f]$(__git_ps1) %# '
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-PS1='%F{green}%n%f@%m[%F{cyan}%~%f]$(__git_ps1) %# '
+# shell state
+#   %~ 作業ディレクトリ($HOMEで始まる場合~に置き換える)
+# login information
+#   %n $USERNAME.
+#   %M ホスト名
+#   %m ホスト名(数字指定がない場合最初の.まで)
+# visual effects
+#   %F(%f) 色指定
+PS1='%F{green}%n%f[%F{cyan}%~%f]$(__git_ps1) %# '
 

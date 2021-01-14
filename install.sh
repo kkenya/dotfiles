@@ -38,7 +38,7 @@ done
 
 shift $((OPTIND - 1))
 
-# confirm that  brew is installed
+# confirm that brew is installed
 if is_installed "brew"; then
     echo "$(tput setaf 2)Already installed Homebrew ✔︎$(tput sgr0)"
 else
