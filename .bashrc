@@ -88,3 +88,5 @@ alias vs="code -r ."
 alias ins="code-insiders -r ."
 
 #find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

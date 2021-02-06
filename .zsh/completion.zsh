@@ -83,3 +83,5 @@ fi
 source <(npm completion)
 ###-end-npm-completion-###
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
