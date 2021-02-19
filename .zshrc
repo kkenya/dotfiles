@@ -7,8 +7,7 @@ else
 fi
 
 # dotfilesで管理しない設定を読み込み
-if [[ -a ~/.localrc ]]
-then
+if [[ -e ~/.localrc ]]; then
   source ~/.localrc
 fi
 
@@ -19,10 +18,9 @@ typeset config_files
 # 配列に.zshの拡張子のファイルパスを代入
 config_files=($ZSH_HOME/**/*.zsh)
 # 各ファイルを読み込み
-for file in $config_files
-do
-    echo $file
-    source $file
+for file in $config_files; do
+  echo $file
+  source $file
 done
 
 HISTFILE="${HOME}/.zsh_history"
@@ -48,7 +46,7 @@ compinit
 
 # zshrc.zwcが古い場合にコンパイルする
 if [[ ~/.zshrc -nt ~/.zshrc.zwc ]]; then
-   zcompile ~/.zshrc
+  zcompile ~/.zshrc
 fi
 
 #if (which zprof > /dev/null) ;then
@@ -61,4 +59,3 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 # ^uでカーソルから行頭までを削除
 # default kill-whole-line
 bindkey \^U backward-kill-line
-

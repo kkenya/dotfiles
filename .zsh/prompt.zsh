@@ -26,4 +26,3 @@ setopt PROMPT_SUBST
 # visual effects
 #   %F(%f) 色指定
 PS1='%F{green}%n%f[%F{cyan}%~%f]$(__git_ps1) %# '
-

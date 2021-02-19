@@ -9,10 +9,10 @@ fi
 
 # pyenv(python version manager)
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    eval "$(pyenv init -)"
 fi
 
-# mysql5.7
+# mysql5.7
 if [[ -d "/usr/local/opt/mysql@5.7/bin" ]]; then
     export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 fi
@@ -41,4 +41,3 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="~/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
-

@@ -27,4 +27,3 @@ alias ls=exa
 # vscodeをカレントディレクトリで開く
 alias vs="code -r ."
 alias vsi="code-insiders -r ."
-
