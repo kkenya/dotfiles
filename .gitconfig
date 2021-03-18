@@ -14,7 +14,7 @@
 
 [pull]
 	rebase = false
-#	ff = only
+	ff = true # only
 
 [alias]
 	a = add
@@ -47,4 +47,4 @@
     rebase-from-master = git rebase -i HEAD~$(git rev-list --count HEAD ^master)
 	s = status
 	sw = switch
-	swc = switch --create # -c
+	swc = switch --create
