@@ -48,3 +48,5 @@
 	s = status
 	sw = switch
 	swc = switch --create
+[init]
+	defaultBranch = main

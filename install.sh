@@ -5,8 +5,8 @@ DOT_DIR="${HOME}/dotfiles"
 REPOSITORY="git@github.com:kkenya/dotfiles.git"
 
 usage() {
-    CMD_NAME=`basename $0`
-    cat << _EOT_ 1>&2
+    CMD_NAME=$(basename $0)
+    cat <<_EOT_ 1>&2
 Usage:
     $CMD_NAME [<options>]
 
@@ -18,27 +18,26 @@ _EOT_
 }
 
 is_installed() {
-    type $1 > /dev/null 2>&1
+    type $1 >/dev/null 2>&1
 }
 
-while getopts fh: OPT
-do
-  case $OPT in
-    "f" )
+while getopts fh: OPT; do
+    case $OPT in
+    "f")
         FLG_A="TRUE"
         ;;
-    "h" )
+    "h")
         usage
         ;;
-    * )
+    *)
         usage
         ;;
-  esac
+    esac
 done
 
 shift $((OPTIND - 1))
 
-# confirm that  brew is installed
+# confirm that brew is installed
 if is_installed "brew"; then
     echo "$(tput setaf 2)Already installed Homebrew ✔︎$(tput sgr0)"
 else
@@ -66,8 +65,7 @@ fi
 
 cd ${DOT_DIR}
 
-for f in .??*
-do
+for f in .??*; do
     [[ ${f} = ".git" ]] && continue
     # n option replace symlink
     ln -fnsv ${DOT_DIR}/${f} ${HOME}/${f}
