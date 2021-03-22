@@ -2,32 +2,32 @@
     path= ~/.gitconfig.local
 
 [core]
-	excludesfile = ~/.gitignore_global
-	safecrlf = true
+    excludesfile = ~/.gitignore_global
+    safecrlf = true
     ignorecase=false
 
 [color]
-	ui = auto
+    ui = auto
 
 [fetch]
-	prune = true
+    prune = true
 
 [pull]
-	rebase = false
-	ff = true # only
+    rebase = false
+    ff = true # only
 
 [alias]
-	a = add
-	ap = add -p
-	b = branch
-	ba = branch -a
-	bm = branch -m
-	c = commit
-	cm = commit -m
+    a = add
+    ap = add -p
+    b = branch
+    ba = branch -a
+    bm = branch -m
+    c = commit
+    cm = commit -m
     cn = commit --no-verify
-	ca = commit --amend
+    ca = commit --amend
     can = commit --amend --no-edit
-	d = diff
+    d = diff
     dc = diff --cached
     dn = diff --name-status
     d1 = diff HEAD~
@@ -35,18 +35,18 @@
     d3 = diff HEAD~~~
     d4 = diff HEAD~~~~
     d5 = diff HEAD~~~~~
-	l = log
+    l = log
     lp = log -p
     ln = log --name-status # name-onlayはstatusの表示を行わない
     lc = git rev-list --count HEAD ^master
-	lg = log --graph --oneline --decorate=full
-	# lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
+    lg = log --graph --oneline --decorate=full
+    # lg log --graph --date=iso --pretty='[%ad]%C(auto) %h%d %Cgreen%an%Creset : %s'
     # lp = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
     # git log --merges --grep 'from cam-inc/feature/campaign_remain_num_topview'
-	p = push
+    p = push
     rebase-from-master = git rebase -i HEAD~$(git rev-list --count HEAD ^master)
-	s = status
-	sw = switch
-	swc = switch --create
+    s = status
+    sw = switch
+    swc = switch --create
 [init]
-	defaultBranch = main
+    defaultBranch = main
