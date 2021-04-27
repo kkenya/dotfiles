@@ -23,6 +23,7 @@ setopt PROMPT_SUBST
 #   %n $USERNAME.
 #   %M ホスト名
 #   %m ホスト名(数字指定がない場合最初の.まで)
+#   %# A '#' if the shell is running with privileges, a '%' if not.
 # visual effects
 #   %F(%f) 色指定
-PS1='%F{green}%n%f[%F{cyan}%~%f]$(__git_ps1) %# '
+PS1='[%F{cyan}%~%f]$(__git_ps1)%# '
