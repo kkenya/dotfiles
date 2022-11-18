@@ -83,10 +83,6 @@ alias ~="~"
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls="exa"
 
-# start corrent directory in an opened window
-alias vs="code -r ."
-alias ins="code-insiders -r ."
-
 #find /etc/httpd  -type f -print | xargs grep 'VirtualHost'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

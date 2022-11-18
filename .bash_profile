@@ -48,7 +48,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# mysql5.7
+# mysql5.7
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # aws cli

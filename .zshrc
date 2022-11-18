@@ -59,3 +59,5 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 # ^uでカーソルから行頭までを削除
 # default kill-whole-line
 bindkey \^U backward-kill-line
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
