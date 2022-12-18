@@ -1,19 +1,5 @@
 #!/bin/bash
 
-# zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-# git completion
-[[ -f /usr/local/share/zsh/site-functions ]] && . /usr/local/share/zsh/site-functions
-
-# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-[[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]] && . /usr/local/etc/bash_completion.d/git-prompt.sh
-
-# nvm(node version manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -83,5 +69,3 @@ fi
 source <(npm completion)
 ###-end-npm-completion-###
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

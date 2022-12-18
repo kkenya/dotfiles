@@ -46,7 +46,6 @@ else
 fi
 
 echo "Updating Homebrew"
-#brew doctor
 brew update
 
 # confirm that dotfiles directory exists
@@ -67,7 +66,9 @@ cd ${DOT_DIR}
 
 for f in .??*; do
     [[ ${f} = ".git" ]] && continue
-    # n option replace symlink
+    # -n option replace symlink
+    # -s symbolic link
+    # -v verbose
     ln -fnsv ${DOT_DIR}/${f} ${HOME}/${f}
 done
 

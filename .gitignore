@@ -1,4 +1,6 @@
-.DS_Store
 .gitconfig.local
 !.gitkeep
-.npmrc
+.gittemplate/*
+!.gittemplate/.gitkeep
+.zsh/functions/*
+!.zsh/functions/.gitkeep

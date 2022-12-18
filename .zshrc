@@ -49,10 +49,6 @@ if [[ ~/.zshrc -nt ~/.zshrc.zwc ]]; then
   zcompile ~/.zshrc
 fi
 
-#if (which zprof > /dev/null) ;then
-#  zprof | less
-#fi
-
 # 単語の区切りとみなさない文字を定義する
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
@@ -60,4 +56,3 @@ export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 # default kill-whole-line
 bindkey \^U backward-kill-line
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

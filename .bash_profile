@@ -4,7 +4,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # bash completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # default
 # export PS1='[\u@\h \W]\$'

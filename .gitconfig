@@ -35,6 +35,7 @@
     d3 = diff HEAD~~~
     d4 = diff HEAD~~~~
     d5 = diff HEAD~~~~~
+    fo = fetch origin
     l = log
     lp = log -p
     ln = log --name-status # name-onlayはstatusの表示を行わない

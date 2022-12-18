@@ -1,49 +1,35 @@
 #!/bin/bash
 
-export PATH="/usr/local/sbin:$PATH"
+# Homebrew
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# installed packages
+export PATH="$(brew --prefix)/bin:$PATH"
 
-# composer(php package manager)
-if [[ -d "$HOME/.composer/vendor/bin" ]]; then
-    export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
+# git(https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh)
+# allows you to see repository status in your prompt.
+[[ -s "${HOME}/.git-prompt.sh" ]] && . "${HOME}/.git-prompt.sh"
+# include git-completion.zsh
+fpath=(${HOME}/.zsh/functions ${fpath})
 
-# pyenv(python version manager)
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# mysql5.7
-if [[ -d "/usr/local/opt/mysql@5.7/bin" ]]; then
-    export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-fi
-
-# aws cli
-if [[ -d "$HOME/.local/bin" ]]; then
-    export PATH=~/.local/bin:$PATH
-fi
-
-# python version manager
-if [[ -d "$HOME/.poetry/bin" ]]; then
-    export PATH="$HOME/.poetry/bin:$PATH"
-fi
-
-# mongo
-if [[ -d "usr/local/opt/mongodb-community@4.2/bin" ]]; then
-    export PATH="/usr/local/opt/mongodb-community@4.2/bin:$PATH"
-fi
-
-# image magic
-if [[ -d "/usr/local/opt/imagemagick@6/bin" ]]; then
-    export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-fi
-
-# sdkman(java sdk version manager)
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "/Users/s06540/.sdkman/bin/sdkman-init.sh"
-
-# brew install coreutils
-# gnuコマンドを接頭辞gを付与して呼び出し e.g.) gdate --iso-8601
-if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
-   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-fi
+# nvm(node version manager)
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path="$(nvm_find_nvmrc)"
+  
+  if [ -n "$nvmrc_path" ]; then
+  local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+  
+  if [ "$nvmrc_node_version" = "N/A" ]; then
+    nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+      fi
+    elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
