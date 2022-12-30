@@ -1,3 +1,5 @@
-#zmodload zsh/zprof && zprof
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# A module allowing profiling for shell functions.
+zmodload zsh/zprof
+if [ $? = 0 ]; then
+    zprof
+fi
