@@ -54,3 +54,6 @@ which type > /dev/null 2>&1
 if [ $? = 0 ]; then
       zprof
 fi
+
+# tmuxなどで複数のシェルを開始した場合に重複したパスを修正する
+typeset -U PATH

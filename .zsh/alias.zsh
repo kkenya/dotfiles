@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# built in
+## built in
 
 alias reload!='. ~/.zshrc'
 # a 隠しファイル
@@ -20,10 +20,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# install
+## install
 
 # Replacement for 'ls' written in Rust. https://the.exa.website/
 alias ls=exa
-# vscodeをカレントディレクトリで開く
-alias vs="code -r ."
-alias vsi="code-insiders -r ."
