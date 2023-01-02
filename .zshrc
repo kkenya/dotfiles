@@ -21,11 +21,11 @@ SAVEHIST=10000
 # 履歴に開始時刻と経過秒数を記録する
 setopt EXTENDED_HISTORY
 # 入力したコマンドが履歴に存在するなら、古い履歴が削除される
-# setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 # 前回と同じコマンドを履歴に追加しない
 setopt HIST_IGNORE_DUPS
 # 履歴を共有する
-# setopt SHARE_HISTORY
+setopt SHARE_HISTORY
 
 # The following lines were added by compinstall
 zstyle :compinstall filename "${HOME}/.zshrc"
@@ -59,7 +59,3 @@ fi
 
 # tmuxなどで複数のシェルを開始した場合に重複したパスを修正する
 typeset -U PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
