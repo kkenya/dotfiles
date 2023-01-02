@@ -65,7 +65,8 @@ fi
 cd ${DOT_DIR}
 
 for f in .??*; do
-    [[ ${f} = ".git" ]] && continue
+    # todo: 無視するファイルを追加しやすいようにする
+    [ ${f} = ".git" ] && continue
     # -n option replace symlink
     # -s symbolic link
     # -v verbose
