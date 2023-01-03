@@ -9,6 +9,8 @@
 [color]
     ui = auto
 
+[commit]
+    verbose = true
 [fetch]
     prune = true
 

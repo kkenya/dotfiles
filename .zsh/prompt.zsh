@@ -26,4 +26,4 @@ setopt PROMPT_SUBST
 #   %# A '#' if the shell is running with privileges, a '%' if not.
 # visual effects
 #   %F(%f) 色指定
-PS1='[%F{cyan}%~%f]$(__git_ps1)%# '
+PS1='%n[%F{cyan}%~%f]$(__git_ps1)%# '
